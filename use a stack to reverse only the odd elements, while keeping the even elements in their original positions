@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+#define SIZE 100
+
+int top = -1, inp_array[SIZE];
+
+void push(int x)
+{
+    top = top + 1;
+    inp_array[top] = x;
+}
+
+int pop()
+{
+    int x = inp_array[top];
+    top = top - 1;
+    return x;
+}
+
+int main()
+{
+    int arr[SIZE], n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter the elements: ");
+
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    // Put odd elements into stack
+    for(i = 0; i < n; i++)
+    {
+        if(arr[i] % 2 != 0)
+        {
+            push(arr[i]);
+        }
+    }
+
+    // Replace odd elements using pop()
+    for(i = 0; i < n; i++)
+    {
+        if(arr[i] % 2 != 0)
+        {
+            arr[i] = pop();
+        }
+    }
+
+    printf("After reversing odd elements: ");
+
+    for(i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
