@@ -1,0 +1,20 @@
+void insertAt3rdEven() {
+    int value, i;
+    struct node *newnode, *temp;
+
+    printf("Enter value to insert: ");
+    scanf("%d", &value);
+
+    newnode = (struct node*)malloc(sizeof(struct node));
+    newnode->data = value;
+
+    temp = head;
+
+    // 3rd even position = 6th position
+    for(i = 1; i < 5; i++) {
+        temp = temp->next;
+    }
+
+    newnode->next = temp->next;
+    temp->next = newnode;
+}
